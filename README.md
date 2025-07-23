@@ -45,7 +45,7 @@ Bacayomi adalah project web pembaca komik open-source berbasis PHP yang terinspi
 
 ## 👤 Developer
 
-**Project Manager**: [Dhany](https://github.com/)  
+**Project Manager**: [Dhany](https://github.com/dhasap)  
 **Assistant & Support**: Jono  
 **Code Execution**: Jamal
 
