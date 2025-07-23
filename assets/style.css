@@ -1,0 +1,339 @@
+/* assets/style.css */
+/* Desain CSS Final & Mobile-First untuk Bacayomi */
+
+/* 1. Pengaturan Global & Font */
+/* ---------------------------------- */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth; /* Mengaktifkan smooth scroll secara global */
+}
+
+body {
+    font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    background-color: #f4f7f9; /* Abu-abu sangat muda, bersih */
+    color: #333;
+    line-height: 1.6;
+}
+
+.container {
+    width: 95%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px 0;
+}
+
+a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* 2. Header & Footer */
+/* ---------------------------------- */
+header, footer {
+    text-align: center;
+    padding: 20px 15px;
+}
+
+header {
+    border-bottom: 1px solid #e0e0e0;
+    margin-bottom: 20px;
+}
+
+header h1 {
+    font-weight: 700;
+    color: #2c3e50;
+}
+
+footer {
+    margin-top: 30px;
+    color: #888;
+    font-size: 0.9em;
+}
+
+/* 3. Halaman Index (Daftar Komik) */
+/* ---------------------------------- */
+.source-selector {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 30px;
+    flex-wrap: wrap;
+}
+
+.source-selector select {
+    padding: 12px 15px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 1em;
+    background-color: #fff;
+    cursor: pointer;
+}
+
+.comic-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    gap: 20px;
+}
+
+.comic-card {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    overflow: hidden;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.comic-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+}
+
+.comic-card .cover-link img {
+    width: 100%;
+    height: 210px;
+    object-fit: cover;
+}
+
+.comic-card .title {
+    padding: 12px;
+    font-size: 0.9em;
+    font-weight: 500;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    text-align: center;
+}
+
+.no-data {
+    grid-column: 1 / -1;
+    text-align: center;
+    padding: 40px;
+    background-color: #fff;
+    border-radius: 8px;
+}
+
+/* 4. Halaman Reader (Dark Mode) */
+/* ---------------------------------- */
+body.reader-mode {
+    background-color: #121212;
+    color: #e0e0e0;
+}
+
+body.reader-mode .container {
+    background-color: #1e1e1e;
+    padding: 20px;
+    border-radius: 8px;
+}
+
+body.reader-mode header,
+body.reader-mode footer {
+    background-color: transparent;
+    border-color: #333;
+}
+
+body.reader-mode header h1,
+body.reader-mode h2,
+body.reader-mode h3 {
+    color: #fff;
+}
+
+.reader-images {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.reader-images img {
+    margin-bottom: 2px;
+    cursor: zoom-in;
+}
+
+/* Detail Komik di Halaman Reader */
+.comic-detail-container {
+    display: flex;
+    gap: 25px;
+    flex-direction: column;
+}
+
+.comic-cover {
+    text-align: center;
+}
+
+.comic-cover img {
+    max-width: 250px;
+    border-radius: 8px;
+}
+
+.comic-info .genres a {
+    background-color: #333;
+    color: #f1f1f1;
+    padding: 4px 10px;
+    border-radius: 15px;
+    font-size: 0.8em;
+    margin-right: 5px;
+    display: inline-block;
+    margin-bottom: 8px;
+}
+
+.chapter-list {
+    list-style: none;
+    overflow-y: auto;
+    padding: 10px;
+    background-color: #2a2a2a;
+    border-radius: 8px;
+    border: 1px solid #333;
+    transition: max-height 0.4s ease-in-out;
+}
+
+.chapter-list li a {
+    display: block;
+    padding: 12px 15px;
+    color: #58a6ff;
+    border-bottom: 1px solid #333;
+}
+
+.chapter-list li:last-child a {
+    border-bottom: none;
+}
+
+/* 5. Media Query untuk Layar Lebih Besar */
+/* ---------------------------------- */
+@media (min-width: 768px) {
+    .comic-grid {
+        grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+        gap: 25px;
+    }
+
+    .comic-detail-container {
+        flex-direction: row;
+        align-items: flex-start;
+    }
+
+    .comic-cover {
+       flex: 0 0 250px;
+    }
+
+    .comic-info {
+        flex: 1;
+    }
+}
+
+/* 6. Loading Indicator */
+/* ---------------------------------- */
+#loading-indicator {
+    display: none;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    min-height: 40vh;
+    color: #555;
+}
+.loader {
+    border: 5px solid #f3f3f3;
+    border-top: 5px solid #007bff;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    animation: spin 1s linear infinite;
+    margin-bottom: 15px;
+}
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* 7. Tombol Scroll to Top */
+/* ---------------------------------- */
+#scrollToTopBtn {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    font-size: 24px;
+    cursor: pointer;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s, visibility 0.3s, transform 0.2s;
+    z-index: 1000;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+#scrollToTopBtn.show {
+    opacity: 1;
+    visibility: visible;
+}
+#scrollToTopBtn:hover {
+    transform: scale(1.1);
+}
+
+/* 8. Modal Zoom Gambar */
+/* ---------------------------------- */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 2000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.85);
+    justify-content: center;
+    align-items: center;
+    animation: fadeIn 0.3s;
+}
+.modal-content {
+    max-width: 90%;
+    max-height: 90%;
+    animation: zoomIn 0.3s;
+}
+.modal .close {
+    position: absolute;
+    top: 15px;
+    right: 35px;
+    color: #f1f1f1;
+    font-size: 40px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: color 0.2s;
+}
+.modal .close:hover {
+    color: #bbb;
+}
+@keyframes fadeIn { from {opacity: 0;} to {opacity: 1;} }
+@keyframes zoomIn { from {transform: scale(0.8);} to {transform: scale(1);} }
+
+/* 9. Chapter List Collapse/Expand */
+/* ---------------------------------- */
+#chapterToggleBtn {
+    display: none;
+    margin-bottom: 15px;
+    padding: 8px 15px;
+    background-color: #333;
+    color: white;
+    border: 1px solid #444;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.chapter-list.collapsed {
+    max-height: 250px;
+}
+
